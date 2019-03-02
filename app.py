@@ -4,6 +4,7 @@ Created on Fri Mar  1 09:51:31 2019
 
 @author: Subham Rout
 """
+import os
 
 from flask import Flask
 from flask_restful import Api
@@ -15,7 +16,7 @@ from resources.store import StoreList,Store
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False     #turns off the flask sql alchemy modification tracker as sqlAlchemy has its own tracker
 app.secret_key = "subhamRoutAlwaysRocks"
 api = Api(app)
