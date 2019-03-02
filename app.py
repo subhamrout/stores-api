@@ -20,9 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False     #turns off the flask sq
 app.secret_key = "subhamRoutAlwaysRocks"
 api = Api(app)
 
-@app.before_first_request
-def create_all():
-    db.create_all()
+
 
 
 jwt = JWT(app,authenticate,identity)
